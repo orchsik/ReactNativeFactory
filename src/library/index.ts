@@ -1,5 +1,5 @@
-const test = () => {
-  console.log(111);
+const hello = () => {
+  return 'Hello test success.';
 };
 
-export { test };
+export { hello };

@@ -1,14 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -27,12 +17,34 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { hello } from '@library/index';
+
 const Section: React.FC<{
   title: string;
 }> = ({ children, title }) => {
   const isDarkMode = useColorScheme() === 'dark';
+
+  const [text, setText] = useState('Ready ?');
+  useEffect(() => {
+    setTimeout(() => {
+      const _text = hello();
+      setText(_text);
+    }, 3000);
+  });
+
   return (
     <View style={styles.sectionContainer}>
+      <Text
+        style={[
+          styles.sectionTitle,
+          {
+            color: isDarkMode ? Colors.white : Colors.black,
+          },
+        ]}
+      >
+        {text}
+      </Text>
+
       <Text
         style={[
           styles.sectionTitle,
